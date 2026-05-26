@@ -67,6 +67,6 @@ Reports are written to be readable by both technical and non-technical audiences
 
 ## About
 
-Level 5 Computer Science student at the University of Hertfordshire, working through TryHackMe rooms to build hands-on penetration testing skills alongside my degree. Background in embedded systems (ESP32, MicroPython), networking (Cisco Packet Tracer, VLANs), and software engineering (Java, Agile).
+Level 4 Computer Science student at the University of Hertfordshire, working through TryHackMe rooms to build hands-on penetration testing skills alongside my degree. Background in embedded systems (ESP32, MicroPython), networking (Cisco Packet Tracer, VLANs), and software engineering (Java, Agile).
 
 **Made by Salah Mohamed**
