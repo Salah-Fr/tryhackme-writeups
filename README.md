@@ -1,5 +1,4 @@
 # TryHackMe Writeups
-
 Penetration testing reports and room writeups from my TryHackMe journey. Each report documents the full attack chain — reconnaissance, exploitation, privilege escalation, and lessons learned — written the way a real engagement report would be.
 
 ---
@@ -14,6 +13,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 | **Blaster** | Easy | Windows | Web enumeration (gobuster), IIS directory fuzzing, RDP via xfreerdp, CVE-2019-1388 UAC bypass, Meterpreter web_delivery, registry persistence | [View PDF](./Blaster_Room_Recap.pdf) |
 | **Anthem** | Easy | Windows | Web enumeration, robots.txt, HTML source analysis, OSINT, RDP access, Windows DACL ownership abuse for privilege escalation | [View PDF](./Anthem_Room_Recap.pdf) |
 | **Relevant** | Medium | Windows | Full port scanning, anonymous SMB enumeration, Base64 credential decoding, ASPX webshell via writable SMB share, SeImpersonatePrivilege, PrintSpoofer | [View PDF](./Relevant_Room_Recap.pdf) |
+| **Guided Pentest: Web** | Medium | Linux | HTTP header analysis, Gobuster directory enumeration, IDOR user enumeration, broken password reset (account takeover), file upload filter bypass (.phtml), PHP web shell, reverse shell, RCE as www-data | [View PDF](./Web_Pentest_Report_RecruitX.pdf) |
 
 ---
 
@@ -23,12 +23,18 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Nmap full and targeted scans, service version detection, NSE scripts
 - SMB enumeration with smbclient
 - Web directory brute-forcing with gobuster
+- HTTP header analysis and technology stack fingerprinting
+- IDOR-based user enumeration via URL parameter manipulation
+- API endpoint enumeration without authentication
 - OSINT and HTML source analysis
 
 **Exploitation**
 - Metasploit framework — search, use, set, run
 - Public CVE exploitation (MS17-010 EternalBlue, Icecast, CVE-2019-1388)
 - Manual ASPX webshell generation with msfvenom
+- Broken authentication abuse — password reset token interception
+- File upload filter bypass using alternative PHP extensions (.phtml)
+- PHP web shell deployment and command execution
 - RDP access via xfreerdp
 - Reverse shell setup and listener management with netcat
 
@@ -38,6 +44,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - NTLM hash cracking with John the Ripper
 - Windows file permission and DACL abuse
 - Registry-based persistence
+- Server enumeration via web shell (whoami, hostname, /etc/passwd)
 
 **Privilege Escalation**
 - UAC bypass techniques (bypassuac_eventvwr, CVE-2019-1388)
@@ -45,8 +52,18 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - SeImpersonatePrivilege exploitation with PrintSpoofer
 - Token impersonation on Windows Server 2016
 
+**Web Application**
+- OWASP-aligned manual testing methodology
+- IDOR (Insecure Direct Object Reference) identification and exploitation
+- Broken password reset mechanism abuse
+- Client-side vs server-side restriction bypass
+- File upload allowlist vs blocklist security analysis
+- Cookie security flag analysis (HttpOnly, Secure)
+- Unauthenticated API endpoint disclosure
+
 **Tools Used**
-`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3`
+
+`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `burpsuite`
 
 ---
 
@@ -67,6 +84,6 @@ Reports are written to be readable by both technical and non-technical audiences
 
 ## About
 
-Level 4 Computer Science student at the University of Hertfordshire, working through TryHackMe rooms to build hands-on penetration testing skills alongside my degree. Background in embedded systems (ESP32, MicroPython), networking (Cisco Packet Tracer, VLANs), and software engineering (Java, Agile).
+Level 5 Computer Science student at the University of Hertfordshire, working through TryHackMe rooms to build hands-on penetration testing skills alongside my degree. Background in embedded systems (ESP32, MicroPython), networking (Cisco Packet Tracer, VLANs), and software engineering (Java, Agile).
 
 **Made by Salah Mohamed**
