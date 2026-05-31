@@ -13,6 +13,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 | **Blaster** | Easy | Windows | Web enumeration (gobuster), IIS directory fuzzing, RDP via xfreerdp, CVE-2019-1388 UAC bypass, Meterpreter web_delivery, registry persistence | [View PDF](./Blaster_Room_Recap.pdf) |
 | **Anthem** | Easy | Windows | Web enumeration, robots.txt, HTML source analysis, OSINT, RDP access, Windows DACL ownership abuse for privilege escalation | [View PDF](./Anthem_Room_Recap.pdf) |
 | **Relevant** | Medium | Windows | Full port scanning, anonymous SMB enumeration, Base64 credential decoding, ASPX webshell via writable SMB share, SeImpersonatePrivilege, PrintSpoofer | [View PDF](./Relevant_Room_Recap.pdf) |
+| **Protocols and Servers (1 & 2)** | Easy | Linux | Manual protocol interaction via Telnet (HTTP, FTP, SMTP, POP3, IMAP), cleartext credential sniffing (tcpdump/Wireshark), MITM theory (ARP/DNS spoofing, SSL stripping), TLS/SSH mitigations, Hydra dictionary attack against IMAP | [View PDF](./Protocols_and_Servers_Report_Salah.pdf) |
 | **Guided Pentest: Web** | Medium | Linux | HTTP header analysis, Gobuster directory enumeration, IDOR user enumeration, broken password reset (account takeover), file upload filter bypass (.phtml), PHP web shell, reverse shell, RCE as www-data | [View PDF](./Web_Pentest_Report_RecruitX.pdf) |
 | **Guided Pentest: Infrastructure** | Medium | Linux | Nmap service fingerprinting, searchsploit CVE research, UnrealIRCd backdoor exploitation (CVE-2010-2075), reverse shell via Metasploit, plaintext credential discovery, SSH privilege escalation to root | [View PDF](./Guided_Pentest_Infrastructure_Report.pdf) |
 
@@ -29,6 +30,8 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - API endpoint enumeration without authentication
 - OSINT and HTML source analysis
 - IRC service fingerprinting and version disclosure
+- Manual protocol interaction with raw Telnet client (HTTP, FTP, SMTP, POP3, IMAP)
+- Service banner grabbing and version disclosure analysis
 
 **Exploitation**
 - Metasploit framework — search, use, set, run
@@ -41,6 +44,9 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - PHP web shell deployment and command execution
 - RDP access via xfreerdp
 - Reverse shell setup and listener management with netcat
+- Passive credential sniffing with tcpdump and Wireshark display filters
+- SMTP email spoofing via unverified mail from: header
+- Dictionary attack against IMAP authentication with THC Hydra + rockyou.txt
 
 **Post-Exploitation**
 - Process migration and session management in Meterpreter
@@ -69,9 +75,18 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Cookie security flag analysis (HttpOnly, Secure)
 - Unauthenticated API endpoint disclosure
 
+**Network Protocols & Cryptography**
+- Cleartext protocol mechanics (Telnet, HTTP, FTP, SMTP, POP3, IMAP)
+- Sniffing attacks and packet capture analysis (tcpdump, Wireshark)
+- MITM attack techniques (ARP spoofing, DNS spoofing, rogue AP, SSL stripping)
+- TLS/SSL handshake and certificate trust model
+- Secure protocol upgrades (HTTPS, FTPS, SMTPS, POP3S, IMAPS, DoT)
+- SSH key-based authentication and secure file transfer (SCP, SFTP)
+- CIA triad and DAD attack mapping
+
 **Tools Used**
 
-`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `burpsuite` `searchsploit` `ssh` `xxd`
+`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `burpsuite` `searchsploit` `ssh` `xxd` `tcpdump` `wireshark` `hydra` `telnet` `ftp` `scp`
 
 ---
 
