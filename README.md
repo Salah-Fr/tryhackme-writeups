@@ -16,6 +16,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 | **Protocols and Servers (1 & 2)** | Easy | Linux | Manual protocol interaction via Telnet (HTTP, FTP, SMTP, POP3, IMAP), cleartext credential sniffing (tcpdump/Wireshark), MITM theory (ARP/DNS spoofing, SSL stripping), TLS/SSH mitigations, Hydra dictionary attack against IMAP | [View PDF](./Protocols_and_Servers_Report.pdf) |
 | **Guided Pentest: Web** | Medium | Linux | HTTP header analysis, Gobuster directory enumeration, IDOR user enumeration, broken password reset (account takeover), file upload filter bypass (.phtml), PHP web shell, reverse shell, RCE as www-data | [View PDF](./Web_Pentest_Report_RecruitX.pdf) |
 | **Guided Pentest: Infrastructure** | Medium | Linux | Nmap service fingerprinting, searchsploit CVE research, UnrealIRCd backdoor exploitation (CVE-2010-2075), reverse shell via Metasploit, plaintext credential discovery, SSH privilege escalation to root | [View PDF](./Guided_Pentest_Infrastructure_Report.pdf) |
+| **Modern Web Stacks** | Easy | Linux | Passive stack fingerprinting (HTTP headers, cookies, page-source artifacts), prototype pollution to admin takeover (MERN/Express), Next.js middleware auth bypass (CVE-2025-29927), error-based SQL injection (CVE-2021-35042, Django), Apache path traversal to unauthenticated RCE (CVE-2021-41773) | [View PDF](./Modern_Web_Stacks_Report.pdf) |
 
 ---
 
@@ -26,6 +27,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - SMB enumeration with smbclient
 - Web directory brute-forcing with gobuster
 - HTTP header analysis and technology stack fingerprinting
+- Passive web stack identification across MERN, Next.js, Django, and LAMP from headers, cookie names, and HTML source artifacts
 - IDOR-based user enumeration via URL parameter manipulation
 - API endpoint enumeration without authentication
 - OSINT and HTML source analysis
@@ -36,7 +38,12 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 **Exploitation**
 - Metasploit framework — search, use, set, run
 - Public CVE exploitation (MS17-010 EternalBlue, Icecast, CVE-2019-1388, CVE-2010-2075)
+- Modern web framework CVE exploitation (Next.js CVE-2025-29927, Django CVE-2021-35042, Apache CVE-2021-41773)
 - Supply chain backdoor exploitation (UnrealIRCd 3.2.8.1)
+- Prototype pollution via unfiltered recursive merge (Object.prototype injection)
+- Next.js middleware authentication bypass via trusted internal header (x-middleware-subrequest)
+- Error-based SQL injection using updatexml() XPath error extraction
+- Apache path traversal via encoded-dot filter bypass chained with mod_cgi for RCE
 - Reverse shell payload configuration and port selection (443 firewall evasion)
 - Manual ASPX webshell generation with msfvenom
 - Broken authentication abuse — password reset token interception
@@ -58,6 +65,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Filesystem enumeration for sensitive files (find / -name password*)
 - Plaintext credential extraction from world-readable files
 - Raw shell stabilisation and binary-level password verification with xxd
+- Unauthenticated command execution and file read via CGI (id, cat /etc/passwd, cat /flag.txt)
 
 **Privilege Escalation**
 - UAC bypass techniques (bypassuac_eventvwr, CVE-2019-1388)
@@ -65,9 +73,14 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - SeImpersonatePrivilege exploitation with PrintSpoofer
 - Token impersonation on Windows Server 2016
 - Plaintext root credential abuse via SSH after low-privilege foothold
+- Application-level privilege escalation via prototype pollution (isAdmin bypass)
 
 **Web Application**
 - OWASP-aligned manual testing methodology
+- Modern web stack identification and version confirmation before exploitation
+- Prototype pollution and JavaScript object inheritance abuse
+- Trust boundary failure analysis (framework-internal headers, unsanitised JSON merges)
+- SQL injection through raw query construction that bypasses the ORM
 - IDOR (Insecure Direct Object Reference) identification and exploitation
 - Broken password reset mechanism abuse
 - Client-side vs server-side restriction bypass
@@ -86,7 +99,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 
 **Tools Used**
 
-`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `burpsuite` `searchsploit` `ssh` `xxd` `tcpdump` `wireshark` `hydra` `telnet` `ftp` `scp`
+`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `grep` `burpsuite` `searchsploit` `ssh` `xxd` `tcpdump` `wireshark` `hydra` `telnet` `ftp` `scp`
 
 ---
 
