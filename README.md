@@ -1,4 +1,8 @@
 # TryHackMe Writeups
+
+[![TryHackMe](https://img.shields.io/badge/TryHackMe-SalahFr-red?style=for-the-badge&logo=tryhackme&logoColor=white)](https://tryhackme.com/p/SalahFr)
+
+
 Penetration testing reports and room writeups from my TryHackMe journey. Each report documents the full attack chain — reconnaissance, exploitation, privilege escalation, and lessons learned — written the way a real engagement report would be.
 
 ---
