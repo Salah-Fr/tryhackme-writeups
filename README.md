@@ -17,6 +17,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 | **Guided Pentest: Web** | Medium | Linux | HTTP header analysis, Gobuster directory enumeration, IDOR user enumeration, broken password reset (account takeover), file upload filter bypass (.phtml), PHP web shell, reverse shell, RCE as www-data | [View PDF](./Web_Pentest_Report_RecruitX.pdf) |
 | **Guided Pentest: Infrastructure** | Medium | Linux | Nmap service fingerprinting, searchsploit CVE research, UnrealIRCd backdoor exploitation (CVE-2010-2075), reverse shell via Metasploit, plaintext credential discovery, SSH privilege escalation to root | [View PDF](./Guided_Pentest_Infrastructure_Report.pdf) |
 | **Modern Web Stacks** | Easy | Linux | Passive stack fingerprinting (HTTP headers, cookies, page-source artifacts), prototype pollution to admin takeover (MERN/Express), Next.js middleware auth bypass (CVE-2025-29927), error-based SQL injection (CVE-2021-35042, Django), Apache path traversal to unauthenticated RCE (CVE-2021-41773) | [View PDF](./Modern_Web_Stacks_Report.pdf) |
+| **Web Server Attacks II** | Medium | Windows | IIS 10.0 fingerprinting, HTTP banner grabbing, WebDAV detection, IIS tilde (8.3 short filename) enumeration, backup directory credential discovery, authenticated WebDAV ASPX shell upload (NTLM), post-exploitation identity and SeImpersonatePrivilege analysis, IIS misconfiguration review (directory listing, web.config exposure), Nmap NSE automation | [View PDF](./Web_Server_Attacks_II_Report.pdf) |
 
 ---
 
@@ -34,6 +35,8 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - IRC service fingerprinting and version disclosure
 - Manual protocol interaction with raw Telnet client (HTTP, FTP, SMTP, POP3, IMAP)
 - Service banner grabbing and version disclosure analysis
+- IIS tilde (8.3 short filename) enumeration for hidden directory discovery
+- WebDAV detection via HTTP OPTIONS and DAV response headers
 
 **Exploitation**
 - Metasploit framework — search, use, set, run
@@ -54,6 +57,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Passive credential sniffing with tcpdump and Wireshark display filters
 - SMTP email spoofing via unverified mail from: header
 - Dictionary attack against IMAP authentication with THC Hydra + rockyou.txt
+- Authenticated WebDAV ASPX shell upload via NTLM over HTTP
 
 **Post-Exploitation**
 - Process migration and session management in Meterpreter
@@ -66,6 +70,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Plaintext credential extraction from world-readable files
 - Raw shell stabilisation and binary-level password verification with xxd
 - Unauthenticated command execution and file read via CGI (id, cat /etc/passwd, cat /flag.txt)
+- IIS application pool identity enumeration and SeImpersonatePrivilege identification
 
 **Privilege Escalation**
 - UAC bypass techniques (bypassuac_eventvwr, CVE-2019-1388)
@@ -87,6 +92,7 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - File upload allowlist vs blocklist security analysis
 - Cookie security flag analysis (HttpOnly, Secure)
 - Unauthenticated API endpoint disclosure
+- IIS misconfiguration identification (directory listing, exposed web.config, verbose headers, TRACE method)
 
 **Network Protocols & Cryptography**
 - Cleartext protocol mechanics (Telnet, HTTP, FTP, SMTP, POP3, IMAP)
@@ -96,10 +102,11 @@ Penetration testing reports and room writeups from my TryHackMe journey. Each re
 - Secure protocol upgrades (HTTPS, FTPS, SMTPS, POP3S, IMAPS, DoT)
 - SSH key-based authentication and secure file transfer (SCP, SFTP)
 - CIA triad and DAD attack mapping
+- NTLM challenge-response authentication over HTTP
 
 **Tools Used**
 
-`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `grep` `burpsuite` `searchsploit` `ssh` `xxd` `tcpdump` `wireshark` `hydra` `telnet` `ftp` `scp`
+`nmap` `metasploit` `msfvenom` `smbclient` `gobuster` `xfreerdp` `netcat` `john` `mimikatz` `printspoofer` `certutil` `base64` `python3` `curl` `grep` `burpsuite` `searchsploit` `ssh` `xxd` `tcpdump` `wireshark` `hydra` `telnet` `ftp` `scp` `cadaver` `iis_shortname_scan.py`
 
 ---
 
